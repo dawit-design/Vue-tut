@@ -1,0 +1,69 @@
+<template>
+  <li>
+    <h2>{{ name }} {{ isFavorite ? "(Favorite)" : "" }}</h2>
+    <button @click="toggleFavorite">Toggle Favorite</button>
+    <button @click="toggleDetails">
+      {{ detailsAreVisible ? "Hide" : "Show" }}
+    </button>
+    <ul v-if="detailsAreVisible">
+      <li>phone: {{ phoneNumber }}</li>
+      <li>Email: {{ emailAddress }}</li>
+    </ul>
+    <button @click="$emit('delete', id)">Delete</button>
+  </li>
+</template>
+
+<script>
+export default {
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+    emailAddress: {
+      type: String,
+      required: true,
+    },
+    isFavorite: {
+      boolean: true,
+      required: false,
+      default: false,
+    },
+  },
+  emits: ["toggle-favorite", 'delete'],
+  //   emits: {
+  //     'toggle-favorite': function(id){
+  //         if(id){
+  //             return true
+  //         }else{
+  //             return false
+  //         }
+  //     }
+
+  //   },
+  data() {
+    return {
+      detailsAreVisible: false,
+    };
+  },
+  methods: {
+    toggleDetails() {
+      this.detailsAreVisible = !this.detailsAreVisible;
+    },
+    toggleFavorite() {
+      this.$emit("toggle-favorite", this.id);
+    },
+    // deleteFriend(){
+    //   this.$emit('delete')  
+    // }
+  },
+};
+</script>
