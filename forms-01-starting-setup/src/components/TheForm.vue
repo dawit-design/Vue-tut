@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating" ></rating-control>
     </div>
     <div class="form-control">
       <label for="confirm-terms">Agree to terms of use?</label>
@@ -74,6 +74,7 @@ import RatingControl from './RatingControl.vue'
       how: null,
       confirm: false,
       userNameValid: 'pending',
+      rating: null,
     }
   },
   methods: {
@@ -85,6 +86,7 @@ import RatingControl from './RatingControl.vue'
       this.interest = [];
       this.how = null;
       this.confirm = false;
+      this.rating = null;
 
     },
     validateInput(){
