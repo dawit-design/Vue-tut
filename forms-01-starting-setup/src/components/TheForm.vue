@@ -48,6 +48,9 @@
       </div>
     </div>
     <div class="form-control">
+      <rating-control></rating-control>
+    </div>
+    <div class="form-control">
       <label for="confirm-terms">Agree to terms of use?</label>
       <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm">
     </div>
@@ -57,7 +60,11 @@
   </form>
 </template>
 <script>
+import RatingControl from './RatingControl.vue'
  export default {
+  components: {
+    RatingControl
+  },
   data(){
     return {
       userName: '',
